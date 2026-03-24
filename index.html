@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfumería Luxury</title>
+<link rel="stylesheet" href="css_perfume.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h1>Perfumería Luxury</h1>
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Tienda</a>
+    <a href="#">Contacto</a>
+    <span class="cart" onclick="toggleCart()">🛒 (<span id="count">0</span>)</span>
+  </nav>
+</header>
+
+<div class="breadcrumbs">
+  Inicio > Tienda > Perfumes
+</div>
+
+<!-- CARRUSEL -->
+<section class="carousel">
+  <div class="slides">
+    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601">
+    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f">
+  </div>
+</section>
+
+<!-- CONTROLES -->
+<div class="controls">
+  <input type="text" id="search" placeholder="Buscar perfume...">
+  <select id="filter">
+    <option value="all">Todos</option>
+    <option value="hombre">Hombre</option>
+    <option value="mujer">Mujer</option>
+  </select>
+</div>
+<footer class="footer">
+  <p>Síguenos:</p>
+  <div class="socials">
+    <a href="faCEBOOK">https://www.facebook.com/profile.php?id=61585601158263</a>
+    <a href="WHASTAPP">7445017196</a>
+  </div>
+</footer>
+
+<!-- PRODUCTOS -->
+<section class="products">
+
+  <div class="card" data-name="nautica" data-category="hombre">
+    <div class="img-box">
+      <img src="https://images.unsplash.com/photo-1541643600914-78b084683601">
+    </div>
+    <h3>Nautica Blue</h3>
+    <p>$900</p>
+    <button onclick="addToCart('Nautica Blue',900)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="yara" data-category="mujer">
+    <div class="img-box">
+      <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f">
+    </div>
+    <h3>Yara Candy</h3>
+    <p>$1200</p>
+    <button onclick="addToCart('Yara Candy',1200)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="asad" data-category="hombre">
+    <div class="img-box">
+      <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f">
+    </div>
+    <h3>Asad Lattafa</h3>
+    <p>$1300</p>
+    <button onclick="addToCart('Asad Lattafa',1300)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="rose" data-category="mujer">
+    <div class="img-box">
+      <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de">
+    </div>
+    <h3>Fakhar Rose</h3>
+    <p>$1250</p>
+    <button onclick="addToCart('Fakhar Rose',1250)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="valentino" data-category="hombre">
+    <div class="img-box">
+      <img src="https://m.media-amazon.com/images/I/71EjqbR6yTL._AC_SX569_.jpg">
+    </div>
+    <h3>Valentino</h3>
+    <p>$3250</p>
+    <button onclick="addToCart('Valentino',3250)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="dior" data-category="mujer">
+    <div class="img-box">
+      <img src="https://i5.walmartimages.com.mx/samsmx/images/product-images/img_large/981031821-1l.jpg">
+    </div>
+    <h3>Miss Dior 100ml</h3>
+    <p>$3050</p>
+    <button onclick="addToCart('Miss Dior',3050)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="ckone" data-category="hombre">
+    <div class="img-box">
+      <img src="https://i5.walmartimages.com.mx/samsmx/images/product-images/img_large/981013052l.jpg">
+    </div>
+    <h3>CK One 100ml</h3>
+    <p>$550</p>
+    <button onclick="addToCart('CK One',550)">Agregar</button>
+  </div>
+
+  <div class="card" data-name="badboy" data-category="hombre">
+    <div class="img-box">
+      <img src="https://m.media-amazon.com/images/I/51mgtZYpZhL._AC_SX569_.jpg">
+    </div>
+    <h3>Bad Boy 100ml</h3>
+    <p>$1550</p>
+    <button onclick="addToCart('Bad Boy',1550)">Agregar</button>
+  </div>
+
+</section>
+
+<!-- OVERLAY -->
+<div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+<!-- CARRITO -->
+<div id="cartBox" class="cartBox">
+  <h2>Carrito</h2>
+  <ul id="cartItems"></ul>
+  <p>Total: $<span id="total">0</span></p>
+  <button class="btn-checkout" onclick="finalizarCompra()">Finalizar compra</button>
+  <div id="paymentModal" class="payment-modal">
+  <div class="payment-content">
+    <h2>Pagar con tarjeta 💳</h2>
+
+    <input type="text" placeholder="Nombre en la tarjeta" required>
+    <input type="text" placeholder="Número de tarjeta" maxlength="16" required>
+    <input type="text" placeholder="MM/AA" required>
+    <input type="text" placeholder="CVV" maxlength="3" required>
+
+    <button onclick="procesarPago()">Pagar</button>
+    <button onclick="cerrarPago()" class="cancel">Cancelar</button>
+  </div>
+</div>
+</div>
+
+
+<!-- CONTACTO -->
+<section class="contact">
+  <h2>Contacto</h2>
+  <form id="form">
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo" required>
+    <textarea placeholder="Mensaje"></textarea>
+    <button>Enviar</button>
+  </form>
+</section>
+
+<script src="carrito_perfume.js"></script>
+
+</body>
+</html>
